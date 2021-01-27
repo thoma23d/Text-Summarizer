@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content= "width=device-width, initial-scale-1.0">
+	<title>Text Summarize</title>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+
+<body>
+	<header id="header"> <h1> <a href="{{ url_for('index')}}">Text Summarizer</a> </h1> </header>
+	<main id="main">	
+			<div id="display_input">
+				<h3><u>Please enter the required information to summarize text</u></h3>
+		<form>
+				<label for="title">* Text title:</label>
+				<input id="title" name="title" type="text" placeholder="Title" required> 
+				<label for="file_type">* File type:</label>
+				<select id="file_type" name="file_type" onchange= "changeAction(this.value)" required>
+					<option value="" disabled selected>Choose the file type</option> 
+					<option value="text">Text</option>
+					<option value="txt">txt</option>
+					<option value="pdf">pdf</option>
+					<option value="wikipedia">Wikipedia</option>
+				</select>
+				<input id="file" type="file" name="file">	
+				<label for="algorithm">* Summarization algorithm:</label>	
+				<select id="algorithm" name="algorithm" required>
+					<option value="" disabled selected>Choose an algorithm</option>
+					<option value="feature">Feature Based(Text Rank)</option>
+					<option value="graph">Graph Based</option>
+					<option value="topic">LSA(Topic Method)</option>
+					<option value="cross">LSA(Cross Method)</option>
+				</select>
+				<label for="algorithm">* Summary size (1-50% of input text size):</label>
+				<input id="summary_size" name="summary_size" type="number" min= "1" max= "50" value= "3" required>
+		  		<a href=# id=button><button class='button'>Summarize</button></a>
+			</div>		
+			<div id="display_output">
+				<div class="text original">
+					<textarea type="text" id="original" name="original"></textarea>
+				</div>
+				<div class="text summary">
+					<textarea type="text" id="summary" name="summary"></textarea>
+				</div>
+			</div>
+		</form>
+	</main>
+	
+	<footer>
+		Copyright &copy; 2020 Deanna Thomas<br>
+		<a href = "mailto: deanna20thomas@gmail.com">deanna20thomas@gmail.com</a>
+	</footer>
+</body>
+
+</html>
